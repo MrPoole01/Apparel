@@ -99,6 +99,11 @@ NOTE: if you already have code on a personal project and want to continue, pleas
 
 ## Capstone Examples
 
+* [G15](http://www.g15.xyz/#/students)
+* [G21](https://www.g21.tech/#/students)
+* [G25](https://g25.tech/#/students)
+* [G29](http://www.g29.tech/#/students)
+
 * My HW App - A platform for teachers and students to connect, share assignments, and track student progress.
     * http://www.myhwapp.com/
     * https://github.com/parkerlewis9/myHW_app
