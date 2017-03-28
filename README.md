@@ -92,7 +92,7 @@ NOTE: if you already have code on a personal project and want to continue, pleas
 
 ## Present your work to the class
 
-* Everyone will present at the [Capstone Showcase](https://www.eventbrite.com/e/galvanize-denver-g38-web-development-final-project-showcase-tickets-32304196722)
+* Everyone will present at the Capstone Showcase
 * Friends/family/employers are welcome to attend.
 
 ---
@@ -103,6 +103,7 @@ NOTE: if you already have code on a personal project and want to continue, pleas
 * [G21](https://www.g21.tech/#/students)
 * [G25](https://g25.tech/#/students)
 * [G29](http://www.g29.tech/#/students)
+* [G38](https://g38.tech/#/students)
 
 * My HW App - A platform for teachers and students to connect, share assignments, and track student progress.
     * http://www.myhwapp.com/
