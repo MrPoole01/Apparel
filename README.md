@@ -43,7 +43,6 @@ Your app should:
 * Use a single-page app framework for the front-end or native framework (iOS, Android)
 * Persist data
 * Have some authentication
-* Use a third-party API
 * Look decent - either using custom CSS or modified Bootstrap
 * Use *some significant technology that was not covered in the program*. Examples include:
     * Using Ember, Angular 2, React/Flux etc. on the front-end instead of Angular 1.6
@@ -60,8 +59,6 @@ Your app should:
 The more creative the better!  Anything from card/board games to highly-specific financial apps or apps you wished you had in previous jobs or other situations are all good candidates.
 
 NOTE: in rare cases apps that don't have all of these components _may_ be approved by instructors.  If you believe your app is sufficiently complex and awesome, please submit your ideas.
-
-NOTE: if you already have code on a personal project and want to continue, please submit that along with other ideas, so instructors can evaluate.
 
 ## Follow Agile Workflow
 
