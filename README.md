@@ -41,7 +41,8 @@ Your app should:
 * Be sufficiently unique in the cohort
 * Have a working front-end and back-end
 * Use a single-page app framework for the front-end or native framework (iOS, Android)
-* Persist data
+* Persist data on the back-end
+   * Could be PostgreSQL, MySQL, Mongo, Redis, etc.
 * Have some authentication
 * Look decent - either using custom CSS or modified Bootstrap
 * Use *some significant technology that was not covered in the program*. Examples include:
