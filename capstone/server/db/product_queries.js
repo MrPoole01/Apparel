@@ -9,7 +9,7 @@ module.exports = {
   },
 
   getProductById: function (id) {
-    return knex('product').select().where('id', id)
+    return knex('product').select().where('id', id).first()
   },
 
   getProductByTitle: function (title) {

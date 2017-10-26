@@ -9,7 +9,7 @@ module.exports = {
   },
 
   getSizeById: function (id) {
-    return knex('size').select().where('id', id)
+    return knex('size').select().where('id', id).first()
   },
 
   getSizeByName: function (fit) {
