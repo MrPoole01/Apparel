@@ -22,15 +22,17 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:id', (rep, res) => {
-  queries.getSizeById().then((items) => {
-    res.json(items)
+router.get('/:id', (req, res) => {
+  queries.getSizeById(req.params.id)
+    .then((items) => {
+      res.json(items)
   })
 })
 
-router.get('/:fit', (rep, res) => {
-  queries.getSizeByName().then((items) => {
-    res.json(items)
+router.get('/fit/:fit', (req, res) => {
+  queries.getSizeByName(req.params.fit)
+    .then((items) => {
+      res.json(items)
   })
 })
 

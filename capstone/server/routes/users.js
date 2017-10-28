@@ -11,27 +11,31 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:name', (rep, res) => {
-  queries.getUserByFirstName().then((users) => {
-    res.json(users)
+router.get('/fname/:first_name', (req, res) => {
+  queries.getUserByFirstName(req.params.first_name)
+    .then((users) => {
+      res.json(users)
   })
 })
 
-router.get('/:name', (rep, res) => {
-  queries.getUserByLastName().then((users) => {
-    res.json(users)
+router.get('/lname/:last_name', (req, res) => {
+  queries.getUserByLastName(req.params.last_name)
+    .then((users) => {
+      res.json(users)
   })
 })
 
-router.get('/:email', (rep, res) => {
-  queries.getUserByEmail().then((users) => {
-    res.json(users)
+router.get('/email/:email', (req, res) => {
+  queries.getUserByEmail(req.params.email)
+    .then((users) => {
+      res.json(users)
   })
 })
 
-router.get('/:pic', (rep, res) => {
-  queries.getUserByPic().then((users) => {
-    res.json(users)
+router.get('/pic/:pic', (req, res) => {
+  queries.getUserByPic(req.params.pic)
+    .then((users) => {
+      res.json(users)
   })
 })
 

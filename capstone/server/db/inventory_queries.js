@@ -12,7 +12,7 @@ module.exports = {
     return knex('inventory').select().where('id', id).first()
   },
 
-  getInventoryByQuantity: function (inventoryId) {
+  getInventoryByQuantity: function (items) {
     return knex('inventory')
     .join('product', 'inventory.size_product_id', '=', 'product.id')
     // .join('size', 't_size.size_id', '=', 'size.id')
@@ -21,7 +21,7 @@ module.exports = {
             'size.t_size',
             'inventory.quantity'
             )
-    .where('inventory.size_id', inventoryId)
+    .where('inventory.size_id', items)
   },
 
   postNewInventory: function (result) {

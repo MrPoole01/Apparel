@@ -22,8 +22,8 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:id', (rep, res) => {
-  queries.getItemsById().then((items) => {
+router.get('/:id', (req, res) => {
+  queries.getItemsById(req.params.id).then((items) => {
     res.json(items)
   })
 })
@@ -35,20 +35,21 @@ router.post('/', (req, res) => {
   })
 })
 
-// router.put('/:id', (req, res) => {
-//     queries.putNewField(req.body, req.params.id)
-//       .then((result) => {
-//         res.json({message: "Updated!"})
-//   })
-// })
-
-router.put('/:id', (rep, res) => {
-  queries.updateCart().then((items) => {
-    res.json(items)
+router.put('/:id', (req, res) => {
+    queries.putNewField(req.body, req.params.id)
+      .then((result) => {
+        res.json({message: "Updated!"})
   })
 })
 
-router.delete('/:item', (req, res) => {
+router.put('/:id', (req, res) => {
+  queries.updateCart(req.body, req.params.id)
+    .then((items) => {
+      res.json(items)
+  })
+})
+
+router.delete('/cart/:item', (req, res) => {
 queries.deleteIntry(req.params.item)
   .then((result) => {
     res.json({message: "Deleted!"})

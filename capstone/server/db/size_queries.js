@@ -13,7 +13,7 @@ module.exports = {
   },
 
   getSizeByName: function (fit) {
-    return knex('size').select().where('size', fit)
+    return knex('size').select().where('t_size', fit)
   },
 
   postNewSize: function (result) {

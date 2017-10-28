@@ -22,16 +22,17 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:inventoryId', (req, res) => {
-  queries.getInventoryByQuantity(req.params.inventoryId)
+router.get('/item/:items', (req, res) => {
+  queries.getInventoryByQuantity(req.params.items)
     .then((result) => {
       res.json(result)
   })
 })
 
-router.get('/:id', (rep, res) => {
-  queries.getInventoryById().then((items) => {
-    res.json(items)
+router.get('/:id', (req, res) => {
+  queries.getInventoryById(req.params.id)
+    .then((items) => {
+      res.json(items)
   })
 })
 

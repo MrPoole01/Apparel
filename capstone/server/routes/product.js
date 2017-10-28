@@ -22,27 +22,31 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/:id', (rep, res) => {
-  queries.getProductById().then((items) => {
-    res.json(items)
+router.get('/:id', (req, res) => {
+  queries.getProductById(req.params.id)
+    .then((items) => {
+      res.json(items)
   })
 })
 
-router.get('/:title', (rep, res) => {
-  queries.getProductByTitle().then((items) => {
-    res.json(items)
+router.get('/title/:title', (req, res) => {
+  queries.getProductByTitle(req.params.title)
+    .then((items) => {
+      res.json(items)
   })
 })
 
-router.get('/:color', (rep, res) => {
-  queries.getProductByColor().then((items) => {
-    res.json(items)
+router.get('/color/:color', (req, res) => {
+  queries.getProductByColor(req.params.color)
+    .then((items) => {
+      res.json(items)
   })
 })
 
-router.get('/:price', (rep, res) => {
-  queries.getProductByPrice().then((items) => {
-    res.json(items)
+router.get('/price/:price', (req, res) => {
+  queries.getProductByPrice(req.params.price)
+    .then((items) => {
+      res.json(items)
   })
 })
 
