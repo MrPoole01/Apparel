@@ -9,6 +9,8 @@ Vue.config.productionTip = false
 
 Vue.use(VueResource)
 
+Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
