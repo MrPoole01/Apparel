@@ -9,7 +9,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueResource)
 
-Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
+Vue.http.options.root = 'https://miles-carter.herokuapp.com/data.json'
 
 /* eslint-disable no-new */
 new Vue({

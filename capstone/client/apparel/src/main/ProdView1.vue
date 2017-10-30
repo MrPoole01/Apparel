@@ -1,27 +1,21 @@
 <template>
   <div class="card-deck">
     <div class="card">
-      <img class="card-img-top" src="" alt="Card image cap">
+      <img class="card-img-top" :src="this.product[0].portrait1_url" alt="Card image cap">
       <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h4 class="card-title">{{ shirt1() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="" alt="Card image cap">
+      <img class="card-img-top" :src="this.product[1].portrait1_url" alt="Card image cap">
       <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h4 class="card-title">{{ shirt2() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" src="" alt="Card image cap">
+      <img class="card-img-top" :src="this.product[2].portrait1_url" alt="Card image cap">
       <div class="card-body">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h4 class="card-title">{{ shirt3() }}</h4>
       </div>
     </div>
   </div>
@@ -29,7 +23,28 @@
 
 <script>
   export default {
+    props: [
+      'product'
+    ],
+    data () {
+      return {
 
+      }
+    },
+    mounted() {
+        
+    },
+    methods: {
+      shirt1() {
+        return this.product[0].title
+      },
+      shirt2() {
+        return this.product[1].title
+      },
+      shirt3() {
+        return this.product[2].title
+      }
+    }
   }
 </script>
 
@@ -43,8 +58,12 @@
 
   .card-img-top {
     height: 25em;
+    margin-top: 3em;
   }
 
+  .card {
+    border-style: none;
+  }
 
 
 </style>

@@ -7,26 +7,59 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <router-link class="nav-link" :to="{ name: 'Home', params: {} }">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shop</a>
+          <router-link class="nav-link" :to="{ name: 'Cart', params: {} }">Shop</router-link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
       </ul>
       <span class="navbar-text">
-        Navbar text with an inline element
+        <b-button @click="showModal">
+            Open Modal
+        </b-button>
+        <b-modal ref="myModalRef" hide-footer title="⚠️ Miles Carter Collection">
+          <div class="d-block text-center">
+            <b-form-input class="input"
+                          type="text"
+                          placeholder="User Name">
+            </b-form-input>
+            <p>{{ text1 }}</p>
+            <b-form-input class="input"
+                          type="text"
+                          placeholder="Password">
+            </b-form-input>
+            <p>{{ text2 }}</p>
+          </div class="btn">
+          <b-btn class="sm" variant="outline"  @click="hideModal">Sign In</b-btn>
+          <b-btn class="sm" variant="outline"  @click="hideModal">Sign Up</b-btn>
+        </b-modal>
       </span>
     </div>
   </nav>
 </template>
 
 <script>
-  export default {
 
-  }
+  export default {
+    data () {
+      return {
+        text1: '',
+        text2: ''
+      }
+    },
+    methods: {
+      showModal() {
+            this.$refs.myModalRef.show();
+        },
+      hideModal() {
+            this.$refs.myModalRef.hide();
+        }
+      },
+    }
+
 </script>
 
 <style scoped>
@@ -45,4 +78,17 @@
     width: 9em;
     height: 9em;
   }
+
+  p {
+    text-align: left;
+  }
+
+  .input {
+    margin-bottom: 1em;
+  }
+
+  .btn {
+    text-align: right;
+  }
+
 </style>
