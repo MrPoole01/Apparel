@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+import { StripeCheckout } from 'vue-stripe'
 
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
+Vue.component('stripe-checkout', StripeCheckout);
 
 Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
 

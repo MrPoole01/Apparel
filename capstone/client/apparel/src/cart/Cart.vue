@@ -1,120 +1,125 @@
 <template>
-  <div class="container">
-    <app-Nav></app-Nav>
-    <div class="main">
-      <nav class="well well-sm">
-        <div class="text-right pull-right">
-          <span class="stats">
-            {{ cart.items.length }}
-            <template v-if="cart.items.length == 1">item</template>
-            <template v-else>items</template>
-            in cart, totalling {{ cartTotal | currency }}
-            <b-btn class="btn btn-primary cartbtn" @click="isShowingCart = true">View Cart</b-btn>
-          </span>
-        </div>
-        <a @click.prevent="isShowingCart = false"><strong>return to items</strong></a>
-        <div class="btn-group">
-          <a id="list" @click="listWrapper" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-th-list"></span>
-
-          </a>
-          <a @click="gridWrapper" id="grid" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-th"></span>
-          </a>
-        </div>
-      </nav>
-    </div>
+  <div class="">
     <div class="container">
-      <div v-if="!isShowingCart" id="products" class="row">
-        <div v-for="product in products" :class="groupWrapper" class=" col-xs-5 col-lg-5">
-          <div class="thumbnail">
-            <img class="group list-group-image" :src="product.portrait1_url" alt="" />
-              <div class="caption">
-                <h4 class="group inner list-group-item-heading">
-                  {{product.title}}
-                </h4>
-                <p class="group inner list-group-item-text">
-                  {{product.description}}
-                </p>
-              <div class="row">
-                <div class="col-xs-12 col-md-6">
-                  <p class="lead">
-                    {{product.price | currency}}
+      <app-Nav></app-Nav>
+      <div class="main">
+        <nav class="well well-sm">
+          <div class="text-right pull-right">
+            <span class="stats">
+              {{ cart.items.length }}
+              <template v-if="cart.items.length == 1">item</template>
+              <template v-else>items</template>
+              in cart, totalling {{ cartTotal | currency }}
+              <b-btn class="btn btn-primary cartbtn" @click="isShowingCart = true">View Cart</b-btn>
+            </span>
+          </div>
+          <a @click.prevent="isShowingCart = false"><strong>return to items</strong></a>
+          <div class="btn-group">
+            <a id="list" @click="listWrapper" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-th-list"></span>
+
+            </a>
+            <a @click="gridWrapper" id="grid" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-th"></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <div class="container">
+        <div v-if="!isShowingCart" id="products" class="row">
+          <div v-for="product in products" :class="groupWrapper" class=" col-xs-4 col-lg-4">
+            <div class="thumbnail">
+              <img class="group list-group-image" :src="product.portrait1_url" alt="" />
+                <div class="caption">
+                  <h4 class="group inner list-group-item-heading">
+                    {{product.title}}
+                  </h4>
+                  <p class="group inner list-group-item-text">
+                    {{product.description}}
                   </p>
-                </div>
-                <div class="col-xs-8 flex flex-row align-center justify-right">
-                  <div class="number-in-stock" v-model="selected" :class="{ few: product.inStock < 10 && product.inStock > 0, none: product.inStock == 0 }">
-                    {{ product.selected }} {{ product.inStock }} in stock
+                <div class="row">
+                  <div class="col-xs-12 col-md-6">
+                    <p class="lead">
+                      {{product.price | currency}}
+                    </p>
                   </div>
-                  <b-dropdown id="dropDownId" text="Shirt Sizes" variant="primary" class="m-md-2 flex flex-row align-center justify-right">
-                    <b-dropdown-item v-for="s in size" @click="sizeQuantity(s.t_size, product)" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
-                    <!-- <b-dropdown-item>xs mens</b-dropdown-item> -->
-                  </b-dropdown>
-                  <button class="btn btn-success" @click="addProductToCart(product, size)" :disabled="size.available == 0">Add to cart</button>
+                  <div class="col-xs-8 flex flex-row align-center justify-right">
+                    <div class="number-in-stock" v-model="selected" :class="{ few: product.inStock < 10 && product.inStock > 0, none: product.inStock == 0 }">
+                      {{ product.selected }} {{ product.inStock }} in stock
+                    </div>
+                    <b-dropdown id="dropDownId" text="Shirt Sizes" variant="primary" class="m-md-2 flex flex-row align-center justify-right">
+                      <b-dropdown-item v-for="s in size" @click="sizeQuantity(s.t_size, product)" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
+                    </b-dropdown>
+                    <button class="btn btn-success" @click="addProductToCart(product, size)" :disabled="size.available == 0">Add to cart</button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-else>
-        <h1>Cart</h1>
-        <table v-if="cart.items.length > 0" class="table table-striped">
-          <thead>
-            <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in cart.items">
-              <td>
-                <img class="cartImage" :src="item.product.portrait1_url" alt="">
-                {{ item.product.title }} {{ item.product.selected }}
+        <div v-else>
+          <h1>Cart</h1>
+          <table v-if="cart.items.length > 0" class="table table-striped">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in cart.items">
+                <td>
+                  <img class="cartImage" :src="item.product.portrait1_url" alt="">
+                  {{ item.product.title }} {{ item.product.selected }}
 
-              </td>
-              <td>
-                {{ item.quantity }} &nbsp;
-                <button class="btn btn-success" @click="increaseQuantity(item)" :disabled="item.product.inStock == 0">+</button>
-                <button class="btn btn-danger" @click="decreaseQuantity(item)">-</button>
-              </td>
-              <td>{{ item.quantity * item.product.price | currency }}</td>
-            </tr>
-            <tr>
-              <td class="text-right" colspan="2">
-                <strong>Subtotal</strong>
-              </td>
-              <td>{{ cartTotal | currency }}</td>
-            </tr>
-            <tr>
-              <td class="text-right" colspan="2">
-                <strong>Taxes</strong>
-              </td>
+                </td>
+                <td>
+                  {{ item.quantity }} &nbsp;
+                  <button class="btn btn-success" @click="increaseQuantity(item)" :disabled="item.product.inStock == 0">+</button>
+                  <button class="btn btn-danger" @click="decreaseQuantity(item)">-</button>
+                </td>
+                <td>{{ item.quantity * item.product.price | currency }}</td>
+              </tr>
+              <tr>
+                <td class="text-right" colspan="2">
+                  <strong>Subtotal</strong>
+                </td>
+                <td>{{ cartTotal | currency }}</td>
+              </tr>
+              <tr>
+                <td class="text-right" colspan="2">
+                  <strong>Taxes</strong>
+                </td>
 
-              <td>{{ taxAmount | currency }}</td>
-            </tr>
-            <tr>
-              <td class="text-right" colspan="2">
-                <strong>Grand total</strong>
-              </td>
+                <td>{{ taxAmount | currency }}</td>
+              </tr>
+              <tr>
+                <td class="text-right" colspan="2">
+                  <strong>Grand total</strong>
+                </td>
 
-              <td>{{ cartTotal + taxAmount | currency }}</td>
-            </tr>
-            <tr>
-              <td colspan="2"></td>
-              <td><button class="btn btn-success" @click="checkout">Checkout</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <p v-else>Your cart is currently empty.</p>
+                <td>{{ cartTotal + taxAmount | currency }}</td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td>
+                  <router-link :to="{ name: 'Payment', params: {} }" class="btn btn-success">Checkout</router-link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p v-else>Your cart is currently empty.</p>
+        </div>
       </div>
     </div>
+    <app-Bottom class="footer"></app-Bottom>
   </div>
 </template>
 
 <script>
   import Nav from "@/main/Nav"
+  import Footer from '@/main/Footer'
 
   export default {
     data () {
@@ -131,7 +136,8 @@
       }
     },
     components: {
-      appNav: Nav
+      appNav: Nav,
+      appBottom: Footer
     },
     mounted() {
       this.fetchItems(),
@@ -257,6 +263,14 @@
     text-align: left;
     color: #2c3e50;
     margin-top: 15em;
+    margin-bottom: 10em;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
   }
 
   strong {
@@ -323,11 +337,13 @@
     width: 100em;
     background-color: #fff;
     margin-bottom: 3em;
+    border-style: none;
   }
 
 
-  .list-group-item, .list-group-image {
-    margin-right: 1em;
+  .list-group-item .list-group-image {
+    display: flex;
+    flex-flow: row;
   }
 
   .list-group-item, .thumbnail {
