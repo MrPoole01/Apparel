@@ -12,16 +12,19 @@ module.exports = {
     return knex('inventory').select().where('id', id).first()
   },
 
-  getInventoryByQuantity: function (items) {
+  getInventoryByQuantity: function (itemId, itemSize) {
+    console.log(itemId);
     return knex('inventory')
-    .join('product', 'inventory.size_product_id', '=', 'product.id')
-    // .join('size', 't_size.size_id', '=', 'size.id')
-    .select('title.product.id',
-            'color.product.id',
-            'size.t_size',
-            'inventory.quantity'
+    .join('product', 'product.id', '=', 'inventory.product_id')
+    .join('size', 'size.id', '=', 'inventory.size_id')
+    .select('inventory.product_id',
+            'product.title',
+            'inventory.id as inventory_id',
+            'size.id as size_id',
+            'size.available',
+            'size.t_size'
             )
-    .where('inventory.size_id', items)
+    .where('product_id', itemId)
   },
 
   postNewInventory: function (result) {

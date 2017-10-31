@@ -22,8 +22,8 @@ router.get('/', (req, res) => {
   })
 })
 
-router.get('/item/:items', (req, res) => {
-  queries.getInventoryByQuantity(req.params.items)
+router.get('/item/:itemId', (req, res) => {
+  queries.getInventoryByQuantity(req.params.itemId)
     .then((result) => {
       res.json(result)
   })

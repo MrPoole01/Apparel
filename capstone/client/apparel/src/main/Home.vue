@@ -20,7 +20,8 @@
   import PView1 from '@/main/ProdView1'
   import PView2 from '@/main/ProdView2'
   import Footer from '@/main/Footer'
-  const baseURL = 'https://miles-carter.herokuapp.com/'
+  // const baseURL = 'https://miles-carter.herokuapp.com/'
+  const baseURL = 'http://localhost:8080/'
 
   export default {
     name: 'Home',
