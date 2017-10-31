@@ -16,10 +16,10 @@
         <div class="btn-group">
           <a id="list" @click="listWrapper" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-th-list"></span>
-            List
+
           </a>
           <a @click="gridWrapper" id="grid" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-th"></span>Grid
+            <span class="glyphicon glyphicon-th"></span>
           </a>
         </div>
       </nav>
@@ -43,12 +43,12 @@
                   </p>
                 </div>
                 <div class="col-xs-8 flex flex-row align-center justify-right">
-                  <div class="number-in-stock" v-model="selected" :class="{ few: product.available < 10 && product.available > 0, none: product.available == 0 }">
-                    {{ selected }} in stock {{ size[0].available }}
-
+                  <div class="number-in-stock" v-model="selected" :class="{ few: product.inStock < 10 && product.inStock > 0, none: product.inStock == 0 }">
+                    {{ product.selected }} {{ product.inStock }} in stock
                   </div>
                   <b-dropdown id="dropDownId" text="Shirt Sizes" variant="primary" class="m-md-2 flex flex-row align-center justify-right">
-                    <b-dropdown-item v-for="s in size" @click="sizeQuantity" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
+                    <b-dropdown-item v-for="s in size" @click="sizeQuantity(s.t_size, product)" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
+                    <!-- <b-dropdown-item>xs mens</b-dropdown-item> -->
                   </b-dropdown>
                   <button class="btn btn-success" @click="addProductToCart(product, size)" :disabled="size.available == 0">Add to cart</button>
                 </div>
@@ -69,10 +69,14 @@
           </thead>
           <tbody>
             <tr v-for="item in cart.items">
-              <td>{{ item.product.title }} {{ selected }}</td>
+              <td>
+                <img class="cartImage" :src="item.product.portrait1_url" alt="">
+                {{ item.product.title }} {{ item.product.selected }}
+
+              </td>
               <td>
                 {{ item.quantity }} &nbsp;
-                <button class="btn btn-success" @click="increaseQuantity(item)" :disabled="item.size.available == 0">+</button>
+                <button class="btn btn-success" @click="increaseQuantity(item)" :disabled="item.product.inStock == 0">+</button>
                 <button class="btn btn-danger" @click="decreaseQuantity(item)">-</button>
               </td>
               <td>{{ item.quantity * item.product.price | currency }}</td>
@@ -137,7 +141,7 @@
       cartTotal: function() {
         var total = 0;
         this.cart.items.forEach(function(item) {
-          total += item.quantity * item.product.price;
+          total += item.quantity * item.product.price
         });
         return total;
       },
@@ -150,18 +154,19 @@
         var formatter = new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
-          minimumFractionDigits: 0
+          minimumFractionDigits: 2
         });
         return formatter.format(value);
       }
     },
     methods:{
-    sizeQuantity(data){
-      let size = data.toElement.innerText
-      this.selected.push(size)
+    sizeQuantity(size, product){
+      if (! product.selected) {
+        this.$set(product, "selected", [])
+      }
+      product.selected.push(size)
     },
     fetchItems() {
-      // this.$http.get('http://localhost:8080/')
       this.$http.get('https://miles-carter.herokuapp.com/')
         .then(response => {
           return response.json()
@@ -184,51 +189,52 @@
           })
         },
       removeItemFromCart(cartItem) {
-        var index = this.cart.items.indexOf(cartItem);
+        var index = this.cart.items.indexOf(cartItem)
 
         if (index !== -1) {
-          this.cart.items.splice(index, 1);
+          this.cart.items.splice(index, 1)
         }
       },
       checkout() {
         if (confirm('Are you sure that you want to purchase these products?')) {
           this.cart.items.forEach(function(item) {
-            item.size(id).available += item.quantity;
+            item.product.inStock += item.quantity
+            item.product.selected += item.quantity
           });
-          this.cart.items = [];
+          // this.cart.items = []
         }
       },
       addProductToCart(product, size) {
-        var cartItem = this.getCartItem(product);
+        var cartItem = this.getCartItem(product)
         if (cartItem != null) {
-          cartItem.quantity++;
+          cartItem.quantity++
         } else {
           this.cart.items.push({
             size: size,
             product: product,
             quantity: 1
-          });
+          })
         }
-        size[0].available--;
+        product.inStock--
       },
       increaseQuantity(cartItem) {
-        cartItem.size[0].available--;
-        cartItem.quantity++;
+        cartItem.product.inStock--
+        cartItem.quantity++
       },
       decreaseQuantity(cartItem) {
-        cartItem.quantity--;
-        cartItem.size[0].available++;
+        cartItem.quantity--
+        cartItem.product.inStock++;
         if (cartItem.quantity == 0) {
-          this.removeItemFromCart(cartItem);
+          this.removeItemFromCart(cartItem)
         }
       },
       getCartItem(product) {
         for (var i = 0; i < this.cart.items.length; i++) {
           if (this.cart.items[i].product.id === product.id) {
-            return this.cart.items[i];
+            return this.cart.items[i]
           }
         }
-        return null;
+        return null
       },
       listWrapper(){
         this.groupWrapper = "list-group-item"
@@ -250,7 +256,16 @@
     /*margin-left: 13%;*/
     text-align: left;
     color: #2c3e50;
-    margin-top: 10em;
+    margin-top: 15em;
+  }
+
+  strong {
+    margin-left: 1em;
+  }
+
+  .cartImage {
+    width: 5em;
+    height: 5em;
   }
 
   .row {
@@ -267,6 +282,13 @@
     margin-top: 1em
   }
 
+  .well {
+    position: fixed;
+    margin-top: -5em;
+    background-color: rgba(255, 255, 255, .8);
+    width: 70%;
+    z-index: 1000;
+  }
 
   .cartbtn {
     margin-left: 2em;
@@ -303,9 +325,6 @@
     margin-bottom: 3em;
   }
 
-  .list-group-item:nth-of-type(odd):hover,.list-group-item:hover {
-    background: #428bca;
-  }
 
   .list-group-item, .list-group-image {
     margin-right: 1em;
@@ -316,13 +335,9 @@
   }
 
   .caption  {
-    padding: 9px 9px 0px 9px;
+    padding: 1em 1em 0 1em;
   }
 
-  .list-group-item:nth-of-type(odd)
-  {
-    background: #eeeeee;
-  }
 
   .list-group-item:before, .list-group-item:after {
     display: table;
@@ -331,6 +346,7 @@
 
   .list-group-item img {
     float: left;
+    margin-bottom: 2em;
     width: 100%;
   }
 
