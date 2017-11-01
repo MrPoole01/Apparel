@@ -9,9 +9,13 @@ import { StripeCheckout } from 'vue-stripe'
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
-Vue.component('stripe-checkout', StripeCheckout);
+Vue.component('Stripe', '@/cart/Stripe');
 
 Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
+// Vue.http.interceptors.push((request, next) => {
+//   request.headers.set('X-CSRF-TOKEN', Laracasts.csrf.Token)
+//     next()
+// })
 
 /* eslint-disable no-new */
 new Vue({

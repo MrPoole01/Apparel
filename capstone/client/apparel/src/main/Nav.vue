@@ -18,7 +18,7 @@
       </ul>
       <span class="navbar-text">
         <b-button @click="showModal">
-            Open Modal
+            Login
         </b-button>
         <b-modal ref="myModalRef" hide-footer title="⚠️ Miles Carter Collection">
           <div class="d-block text-center">

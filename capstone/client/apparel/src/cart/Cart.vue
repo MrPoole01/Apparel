@@ -104,7 +104,8 @@
               <tr>
                 <td colspan="2"></td>
                 <td>
-                  <router-link :to="{ name: 'Payment', params: {} }" class="btn btn-success">Checkout</router-link>
+                  <app-Cash></app-Cash>
+                  <!-- <router-link :to="{ name: 'Payment', params: {} }" class="btn btn-success">Checkout</router-link> -->
                 </td>
               </tr>
             </tbody>
@@ -118,7 +119,8 @@
 </template>
 
 <script>
-  import Nav from "@/main/Nav"
+  import Nav from '@/main/Nav'
+  import Cash from '@/cart/Stripe'
   import Footer from '@/main/Footer'
 
   export default {
@@ -137,6 +139,7 @@
     },
     components: {
       appNav: Nav,
+      appCash: Cash,
       appBottom: Footer
     },
     mounted() {

@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <title>Mile Carter Collection</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+      var Laracasts = {
+        csrfToken: "{{ csrfToken }}",
+        stripeKey: "{{ config('services.stripe.key') }}"
+      }
+    </script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link
       rel="stylesheet"
@@ -20,6 +27,5 @@
       crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
   </body>
 </html>
