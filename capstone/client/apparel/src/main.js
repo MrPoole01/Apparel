@@ -10,6 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueResource)
 Vue.component('Stripe', '@/cart/Stripe');
+Vue.component('stripe-checkout', StripeCheckout);
 
 Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
 // Vue.http.interceptors.push((request, next) => {

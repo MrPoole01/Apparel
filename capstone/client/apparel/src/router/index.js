@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import Home from '@/main/Home'
 import Cart from '@/cart/Cart'
 import Items from '@/product/Items'
-import Payment from '@/cart/Payment'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -28,11 +27,6 @@ export default new Router({
       path: '/cart',
       name: 'Cart',
       component: Cart
-    },
-    {
-      path: 'cart',
-      name: 'Payment',
-      component: Payment
     }
 
   ]

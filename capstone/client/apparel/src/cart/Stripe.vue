@@ -1,14 +1,15 @@
 <template>
-  <form >
+  <form action="/charge">
 
     <input type="hidden" name="stripeToken" value="" v-model="stripeToken">
     <input type="hidden" name="stripeEmail" value="" v-model="stripeEmail">
-    <button  class="btn btn-success" @click.prevent="purchase" type="submit">Purchase Your Items</button>
+    <button  class="btn btn-primary" @click.prevent="purchase" type="submit">Purchase Your Items</button>
 
   </form>
 </template>
 
 <script>
+
   export default {
     data () {
       return {
@@ -16,29 +17,26 @@
         stripeToken: ''
       }
     },
-    created() {
+    mounted() {
       this.stripe = StripeCheckout.configure({
-        key: pk_test_K1WiKB6RSgYb0yiAOpnPgHRj,
-        image: "https://stripe.com/img/documentation/checkout/marketplace.png",
+        key: 'pk_test_K1WiKB6RSgYb0yiAOpnPgHRj',
+        image: "https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/23131930_10155858130673748_7174259592997433101_n.jpg?oh=c619e67ba1ec1bbad367abfacbfde71c&oe=5A6DF12B",
         locale: "auto",
         token: () => {
           this.stripeEmail = token.email
           this.stripeToken = token.id
-          // document.querySelector('#stripeEmail').value = token.email
-          // document.querySelector('#stripeToken').value = token.id
 
-          this.$http.post('/purchases', this.$data)
+          this.$http.post('/charge', this.$data)
             .then(response => alert('Complete! Thanks for your payment!'))
-          // document.querySelector('#form-checkout').submit()
         }
       })
     },
     methods: {
       purchase() {
         this.stripe.open({
-          name: 'MCC',
-          description: 'red',
-          zipcode: true,
+          name: 'Miles Carter Collection',
+          description: '2 Widgets',
+          zipcode: false,
           amount: 2500
         })
       }

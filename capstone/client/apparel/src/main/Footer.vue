@@ -22,12 +22,12 @@
 <style scoped>
 
   .navbar {
-    height: 10em;
+    height: 4em;
   }
 
   p {
     text-align: center;
-    margin-top: 8em;
+    margin-top: 0em;
   }
 
 </style>
