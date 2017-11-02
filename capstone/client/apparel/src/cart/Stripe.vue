@@ -1,5 +1,5 @@
 <template>
-  <form action="/">
+  <form action="/charge">
 
     <input type="hidden" name="stripeToken" value="" v-model="stripeToken">
     <input type="hidden" name="stripeEmail" value="" v-model="stripeEmail">
@@ -23,6 +23,8 @@
       }
     },
     mounted() {
+      console.log(this.stripeEmail);
+      console.log(this.stripeToken);
       this.stripe = StripeCheckout.configure({
         key: 'pk_test_K1WiKB6RSgYb0yiAOpnPgHRj',
         image: "https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/23131930_10155858130673748_7174259592997433101_n.jpg?oh=c619e67ba1ec1bbad367abfacbfde71c&oe=5A6DF12B",

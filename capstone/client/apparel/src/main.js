@@ -6,6 +6,10 @@ import router from './router'
 import VueResource from 'vue-resource'
 import { StripeCheckout } from 'vue-stripe'
 
+window.moment = require(‘moment’);
+window.axios = require(‘axios’);
+window.axios.defaults.headers.common[‘X-Requested-With’] = ‘XMLHttpRequest’;
+
 Vue.config.productionTip = false
 
 Vue.use(VueResource)

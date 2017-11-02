@@ -3,11 +3,11 @@ const bodyParser = require('body-parser')
 
 module.exports = {
 
-  getAllUser: function () {
+  getCustomerInfo: function () {
     return knex('customer').select()
   },
 
-  postNewUser: function (result) {
+  postToken: function (result) {
     return knex('customer').insert(result).returning('*')
   }
 }
