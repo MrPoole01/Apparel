@@ -177,8 +177,8 @@
       product.selected.push(size)
     },
     fetchItems() {
-      // this.$http.get('https://miles-carter.herokuapp.com/')
-      this.$http.get('http://localhost:8080/')
+      this.$http.get('https://miles-carter.herokuapp.com/')
+      // this.$http.get('http://localhost:8080/')
         .then(response => {
           return response.json()
         })

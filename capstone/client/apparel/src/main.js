@@ -13,7 +13,7 @@ Vue.use(VueResource)
 Vue.component('Stripe', '@/cart/Stripe');
 Vue.component('stripe-checkout', StripeCheckout);
 
-// Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
+Vue.http.options.root = 'https://miles-carter.herokuapp.com/'
 
 /* eslint-disable no-new */
 new Vue({

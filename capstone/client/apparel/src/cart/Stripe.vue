@@ -8,7 +8,7 @@
 
 <script>
 
-  const serverUrl = 'http://localhost:8080'
+  const serverUrl = 'https://miles-carter.herokuapp.com/'
 
   export default {
     props: [
