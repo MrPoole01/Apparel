@@ -32,7 +32,7 @@
       }
     },
     mounted() {
-        
+
     },
     methods: {
       shirt1() {
@@ -57,7 +57,7 @@
   }
 
   .card-img-top {
-    height: 25em;
+    height: 30em;
     margin-top: 3em;
   }
 

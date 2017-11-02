@@ -1,5 +1,5 @@
 <template>
-  <form action="/charge">
+  <form action="/">
 
     <input type="hidden" name="stripeToken" value="" v-model="stripeToken">
     <input type="hidden" name="stripeEmail" value="" v-model="stripeEmail">
@@ -11,6 +11,11 @@
 <script>
 
   export default {
+    props: [
+      'cartTotal',
+      'taxAmount',
+      'getCartItem'
+    ],
     data () {
       return {
         stripeEmail: '',
@@ -35,9 +40,9 @@
       purchase() {
         this.stripe.open({
           name: 'Miles Carter Collection',
-          description: '2 Widgets',
-          zipcode: false,
-          amount: 2500
+          description: 'Designer T-Shirts',
+          zipCode: true,
+          amount: this.cartTotal * 1000 / 10 + this.taxAmount * 1000 / 10
         })
       }
     }

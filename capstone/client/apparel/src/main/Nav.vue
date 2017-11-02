@@ -2,7 +2,7 @@
   <nav class="navbar fixed-top navbar-expand-lg navbar-light">
     <img src="../assets/MCCLogo-01.png">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
@@ -13,10 +13,11 @@
           <router-link class="nav-link" :to="{ name: 'Cart', params: {} }">Shop</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <router-link class="nav-link" :to="{ name: 'Contact', params: {} }">Contact</router-link>
         </li>
       </ul>
       <span class="navbar-text">
+        <h3 v-show="name" v-model="text1">Welcome {{ text1 }}</h3>
         <b-button @click="showModal">
             Login
         </b-button>
@@ -24,16 +25,18 @@
           <div class="d-block text-center">
             <b-form-input class="input"
                           type="text"
+                          v-model="text1"
                           placeholder="User Name">
             </b-form-input>
-            <p>{{ text1 }}</p>
+            <p>{{ error1 }}</p>
             <b-form-input class="input"
                           type="text"
+                          v-model="text2"
                           placeholder="Password">
             </b-form-input>
-            <p>{{ text2 }}</p>
+            <p>{{ error2 }}</p>
           </div class="btn">
-          <b-btn class="sm" variant="outline"  @click="hideModal">Sign In</b-btn>
+          <b-btn class="sm" variant="outline"  @click="showNameOnLogin">Sign In</b-btn>
           <b-btn class="sm" variant="outline"  @click="hideModal">Sign Up</b-btn>
         </b-modal>
       </span>
@@ -47,7 +50,10 @@
     data () {
       return {
         text1: '',
-        text2: ''
+        text2: '',
+        error1: '',
+        error2: '',
+        name: false
       }
     },
     methods: {
@@ -56,6 +62,10 @@
         },
       hideModal() {
             this.$refs.myModalRef.hide();
+        },
+        showNameOnLogin() {
+          this.name = true
+          this.$refs.myModalRef.hide();
         }
       },
     }
@@ -72,6 +82,11 @@
   .navbar {
     height: 10em;
     background-color: rgba(255, 255, 255, .8);
+  }
+
+  h3 {
+    display: inline;
+    margin-right: 5em;
   }
 
   img {

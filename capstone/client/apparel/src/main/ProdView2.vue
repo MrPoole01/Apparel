@@ -1,19 +1,19 @@
 <template>
   <div class="card-deck">
     <div class="card">
-      <img class="card-img-top" :src="product[0].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src="product[3].portrait1_url" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{ shirt1() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" :src="product[1].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src="product[4].portrait1_url" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{ shirt2() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" :src="product[2].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src="product[5].portrait1_url" alt="Card image cap">
       <div class="card-body">
         <h4 class="card-title">{{ shirt3() }}</h4>
       </div>
@@ -36,13 +36,13 @@
     },
     methods: {
       shirt1() {
-        return this.product[0].title
+        return this.product[3].title
       },
       shirt2() {
-        return this.product[1].title
+        return this.product[4].title
       },
       shirt3() {
-        return this.product[2].title
+        return this.product[5].title
       }
     }
   }
@@ -57,7 +57,7 @@
   }
 
   .card-img-top {
-    height: 25em;
+    height: 30em;
     margin-top: 3em;
   }
 

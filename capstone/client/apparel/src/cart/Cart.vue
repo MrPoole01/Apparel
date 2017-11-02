@@ -43,7 +43,7 @@
                       {{product.price | currency}}
                     </p>
                   </div>
-                  <div class="col-xs-8 flex flex-row align-center justify-right">
+                  <div class="col-xs-8 flex flex-row align-center justify-right fade">
                     <div class="number-in-stock" v-model="selected" :class="{ few: product.inStock < 10 && product.inStock > 0, none: product.inStock == 0 }">
                       {{ product.selected }} {{ product.inStock }} in stock
                     </div>
@@ -104,7 +104,10 @@
               <tr>
                 <td colspan="2"></td>
                 <td>
-                  <app-Cash></app-Cash>
+                  <app-Cash
+                    :cartTotal="cartTotal"
+                    :getCartItem:="getCartItem"
+                    :taxAmount="taxAmount"></app-Cash>
                   <!-- <router-link :to="{ name: 'Payment', params: {} }" class="btn btn-success">Checkout</router-link> -->
                 </td>
               </tr>
@@ -131,10 +134,10 @@
         cart: {
           items: []
         },
+        name: true,
         products: [],
         size: [],
         selected: []
-
       }
     },
     components: {
@@ -176,7 +179,8 @@
       product.selected.push(size)
     },
     fetchItems() {
-      this.$http.get('https://miles-carter.herokuapp.com/')
+      // this.$http.get('https://miles-carter.herokuapp.com/')
+      this.$http.get('http://localhost:8080/')
         .then(response => {
           return response.json()
         })
@@ -257,6 +261,10 @@
 
 <style scoped>
 
+  .fade {
+    opacity: 1;
+  }
+
   .container {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -278,6 +286,10 @@
 
   strong {
     margin-left: 1em;
+  }
+
+  .btn {
+    margin-left: .5em;
   }
 
   .cartImage {
