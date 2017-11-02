@@ -13,7 +13,8 @@
   export default {
     props: [
       'cartTotal',
-      'taxAmount'
+      'taxAmount',
+      'cart'
     ],
     data () {
       return {
@@ -31,7 +32,13 @@
           this.stripeEmail = token.email
           this.stripeToken = token.id
           this.$http.post(serverUrl + '/charge', this.$data)
-            .then(response => alert('Complete! Thanks for your payment!'))
+            .then(response => swal({
+              title: "Your Purchase on the way!",
+              text: "Thank you for shopping with Miles Carter Collection!",
+              icon: "success",
+              button: "Have a great day!",
+            }))
+            this.cart.items = []
         }
       })
     },

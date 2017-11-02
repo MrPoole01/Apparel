@@ -48,7 +48,7 @@
                       {{ product.selected }} {{ product.inStock }} in stock
                     </div>
                     <b-dropdown id="dropDownId" text="Shirt Sizes" variant="primary" class="m-md-2 flex flex-row align-center justify-right">
-                      <b-dropdown-item v-for="s in size" @click="sizeQuantity(s.t_size, product)" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
+                      <b-dropdown-item v-for="s in size" :value="s.id" @click="sizeQuantity(s.t_size, product)" :data="s" :key="s.t_size">{{ s.t_size }}</b-dropdown-item>
                     </b-dropdown>
                     <button class="btn btn-success" @click="addProductToCart(product, size)" :disabled="size.available == 0">Add to cart</button>
                   </div>
@@ -106,7 +106,8 @@
                 <td>
                   <app-Cash
                     :cartTotal="cartTotal"
-                    :taxAmount="taxAmount"></app-Cash>
+                    :taxAmount="taxAmount"
+                    :cart="cart"></app-Cash>
                 </td>
               </tr>
             </tbody>
