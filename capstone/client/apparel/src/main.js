@@ -2,17 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import axios from 'axios'
 import router from './router'
+import VueAxios from 'vue-axios'
 import VueResource from 'vue-resource'
 import { StripeCheckout } from 'vue-stripe'
 
-window.moment = require(‘moment’);
-window.axios = require(‘axios’);
-window.axios.defaults.headers.common[‘X-Requested-With’] = ‘XMLHttpRequest’;
 
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
+Vue.use(VueAxios, axios)
 Vue.component('Stripe', '@/cart/Stripe');
 Vue.component('stripe-checkout', StripeCheckout);
 
