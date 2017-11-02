@@ -3,9 +3,7 @@ const cors = require('cors')
 const path = require('path');
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser');
-const keySecret = process.env.SECRET_KEY;
-const keyPublishable = process.env.PUBLISHABLE_KEY;
-const stripe = require("stripe")(keySecret);
+require('dotenv').config();
 
 
 // Routes request
@@ -26,7 +24,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set("view engine", "pug");
 
 app.use('/size', size)
 app.use('/user', user)
@@ -50,7 +47,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json(err);
 });
 
 app.listen(port)

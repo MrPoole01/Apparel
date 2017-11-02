@@ -106,9 +106,7 @@
                 <td>
                   <app-Cash
                     :cartTotal="cartTotal"
-                    :getCartItem:="getCartItem"
                     :taxAmount="taxAmount"></app-Cash>
-                  <!-- <router-link :to="{ name: 'Payment', params: {} }" class="btn btn-success">Checkout</router-link> -->
                 </td>
               </tr>
             </tbody>
