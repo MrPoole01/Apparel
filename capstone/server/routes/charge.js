@@ -1,7 +1,6 @@
 const knex = require('../db/knex');
 const express = require('express')
 const bodyParser = require('body-parser');
-const queries = require('../db/charge_queries');
 const keySecret = process.env.SECRET_KEY;
 const keyPublishable = process.env.PUBLISHABLE_KEY;
 const stripe = require("stripe")(keySecret);
