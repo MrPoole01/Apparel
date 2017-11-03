@@ -16,7 +16,11 @@ Link to Live site => https://miles-carter-collection.firebaseapp.com/
 - Heroku
 - PostgreSQL
 
+<<<<<<< HEAD
 ## Set up a local postgres database
+=======
+## Set up a local postgres database 
+>>>>>>> 7f4e1fa34a0c4919a4a1fa4d42d170d2304741b0
 - npm install knex -g
 - npm install
 - knex migrate:latest
