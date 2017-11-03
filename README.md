@@ -30,7 +30,3 @@ Link to Live site => https://miles-carter-collection.firebaseapp.com/
 - C- reate a .env file, use .env.example as a reference
 - knex migrate:latest --env production
 - knex seed:run --env production
-
-Handlebars http://handlebarsjs.com/
-
-Bookshelf https://github.com/bookshelf/bookshelf
