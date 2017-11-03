@@ -1,4 +1,4 @@
-![Think Tank Books](/capstone/client/apparel/src/assets/MCCLogo-01.png)
+![miles-carter-collection](/capstone/client/apparel/src/assets/MCCLogo-01.png)
 # Miles Carter Collection
 Miles Cater Collection is a full e-commerce wen application featuring desiner t-shirts. The application was designed and implimented in 1 1/2 weeks. Mile Carter showcases great design skills along with the ability to complete a full stack CRUD e-commerce applicaton!
 
