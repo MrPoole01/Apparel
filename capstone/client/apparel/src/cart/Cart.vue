@@ -386,7 +386,7 @@
 
   .list-group-item-text {
     margin: 0 0 1em;
-    height: 5em;
+    height: 8em;
   }
 
 
