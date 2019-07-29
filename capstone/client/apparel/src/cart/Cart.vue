@@ -29,7 +29,7 @@
         <div v-if="!isShowingCart" id="products" class="row">
           <div v-for="product in products" :key="product" :class="groupWrapper" class=" col-xs-4 col-lg-4">
             <div class="thumbnail"> 
-              <img v-for="image in images" :key="image" class="group list-group-image" :src=images.imageURL alt="" />
+              <img v-for="image in images" :key="image" class="group list-group-image" :src=image.imageURL alt="" />
               <!-- <img class="group list-group-image" :src="product.portrait1_url" alt="" /> -->
                 <div class="caption">
                   <h4 class="group inner list-group-item-heading">
