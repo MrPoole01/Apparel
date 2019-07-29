@@ -1,19 +1,22 @@
 <template>
   <div class="card-deck">
     <div class="card">
-      <img class="card-img-top" :src="this.product[0].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src=productImage1 alt="Card image cap">
+      <!-- <img class="card-img-top" :src="this.product[0].portrait1_url" alt="Card image cap"> -->
       <div class="card-body">
         <h4 class="card-title">{{ shirt1() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" :src="this.product[1].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src=productImage2 alt="Card image cap">
+      <!-- <img class="card-img-top" :src="this.product[1].portrait1_url" alt="Card image cap"> -->
       <div class="card-body">
         <h4 class="card-title">{{ shirt2() }}</h4>
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top" :src="this.product[2].portrait1_url" alt="Card image cap">
+      <img class="card-img-top" :src=productImage3 alt="Card image cap">
+      <!-- <img class="card-img-top" :src="this.product[2].portrait1_url" alt="Card image cap"> -->
       <div class="card-body">
         <h4 class="card-title">{{ shirt3() }}</h4>
       </div>
@@ -28,7 +31,9 @@
     ],
     data () {
       return {
-
+        productImage1: "http://bit.ly/2ZhqRuZ"
+        productImage2: "http://bit.ly/32XA3a4"
+        productImage3: "http://bit.ly/2ZiVBLW"
       }
     },
     mounted() {
