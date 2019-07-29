@@ -2,7 +2,7 @@
 # Miles Carter Collection
 Miles Cater Collection is a full e-commerce wen application featuring desiner t-shirts. The application was designed and implimented in 1 1/2 weeks. Mile Carter showcases great design skills along with the ability to complete a full stack CRUD e-commerce applicaton!
 
-Link to Live site => https://miles-carter-collection.firebaseapp.com/
+Link to Live site => https://miles-carter-collection.web.app/
 
 ## Technology Used:
 - Vue JS
