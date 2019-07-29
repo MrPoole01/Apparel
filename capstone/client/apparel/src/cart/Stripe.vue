@@ -26,7 +26,7 @@
     mounted() {
       this.stripe = StripeCheckout.configure({
         key: 'pk_test_K1WiKB6RSgYb0yiAOpnPgHRj',
-        image: "https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/23131930_10155858130673748_7174259592997433101_n.jpg?oh=c619e67ba1ec1bbad367abfacbfde71c&oe=5A6DF12B",
+        image: "http://bit.ly/2yhV69a",
         locale: "auto",
         token: (token) => {
           this.stripeEmail = token.email
