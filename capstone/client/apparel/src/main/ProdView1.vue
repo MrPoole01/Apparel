@@ -31,8 +31,8 @@
     ],
     data () {
       return {
-        productImage1: "http://bit.ly/2ZhqRuZ"
-        productImage2: "http://bit.ly/32XA3a4"
+        productImage1: "http://bit.ly/2ZhqRuZ",
+        productImage2: "http://bit.ly/32XA3a4",
         productImage3: "http://bit.ly/2ZiVBLW"
       }
     },

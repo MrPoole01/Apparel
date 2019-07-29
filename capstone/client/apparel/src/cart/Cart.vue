@@ -27,9 +27,10 @@
       </div>
       <div class="container">
         <div v-if="!isShowingCart" id="products" class="row">
-          <div v-for="product in products" :class="groupWrapper" class=" col-xs-4 col-lg-4">
-            <div class="thumbnail">
-              <img class="group list-group-image" :src="product.portrait1_url" alt="" />
+          <div v-for="product in products" :key="product" :class="groupWrapper" class=" col-xs-4 col-lg-4">
+            <div class="thumbnail"> 
+              <img v-for="image in images" :key="image" class="group list-group-image" :src=images.imageURL alt="" />
+              <!-- <img class="group list-group-image" :src="product.portrait1_url" alt="" /> -->
                 <div class="caption">
                   <h4 class="group inner list-group-item-heading">
                     {{product.title}}
@@ -128,6 +129,33 @@
   export default {
     data () {
       return {
+        images: [
+          {
+            imageID: 2234,
+            imageURL: "http://bit.ly/2ZhqRuZ"
+          },
+          {
+            imageID: 2235,
+            imageURL: "http://bit.ly/32XA3a4"
+          },
+          {
+            imageID: 2236,
+            imageURL: "http://bit.ly/2ZiVBLW"
+          },
+          {
+            imageID: 2237,
+            imageURL: "http://bit.ly/2ylwZ9v"
+          },
+          {
+            imageID: 2238,
+            imageURL: "http://bit.ly/2YyyXSC"
+          },
+          {
+            imageID: 2239,
+            imageURL: "http://bit.ly/2K8ZsF7"
+          },
+        ],
+        imageVariant: 0,
         groupWrapper: "list-group-item",
         isShowingCart: false,
         cart: {
