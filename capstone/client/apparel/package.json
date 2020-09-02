@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "bootstrap-vue": "^1.0.0-beta.9",
+    "bootstrap-vue": "^2.0.0-rc.12",
     "jquery": "^1.9.1",
     "moment": "^2.19.1",
     "popper.js": "^1.12.6",
